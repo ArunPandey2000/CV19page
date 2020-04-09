@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+<style>
+
+body{
+    background-color: #eee;
+    padding: 0;
+    margin: 0;
+}
+
+#start_screen{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #262828;
+    overflow: hidden;
+    text-align: center;
+    font-family: "Arial Black", sans-serif;
+}
+
+#start_screen:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background-color: #262828;
+    -webkit-animation-name: slidingLeft;
+    -webkit-animation: slidingLeft 3s 2s forwards;
+}
+
+@-webkit-keyframes slidingLeft {
+    to{ left: 100%; }
+}
+
+#start_screen .presenting-text,#start_screen .Collaboration-text,
+#start_screen .serena-name-text,#start_screen .manofaction-name-text,
+#start_screen .plus-text,#start_screen .manofaction-name-text,
+#start_screen .and-text,#start_screen .sickline-name-text,
+#start_screen .horizontal-line,#start_screen .like-text{
+    position: absolute;
+    top: 210px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#start_screen .presenting-text{
+    font-family: "Arial Black", sans-serif;
+    letter-spacing: 6px;
+    color: #f9dc52;
+    -webkit-animation: textSlidingTop 2s 5s forwards;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgb(255, 51, 140) 0%, rgba(252,251,121,1) 90% );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#start_screen .Collaboration-text{
+    letter-spacing: 3px;
+    font-family: 'Pacifico', cursive;
+    font-size: 10px;
+    top: 280px;
+    color: #67ffcf;
+    -webkit-animation-name: bounceInLeft, collabSlidingTop;
+    -webkit-animation-duration: 2000ms, 1000ms;
+    -webkit-animation-delay: 4s, 6s;
+    -webkit-animation-timing-function: ease-in, ease-out;
+    -webkit-animation-iteration-count: 1, 1;
+    -webkit-animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+#start_screen .serena-name-text{
+    font-family: 'Cinzel', serif;
+    top: 170px;
+    color: #ff338c;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0;
+    -webkit-animation: zoomInRight 1s 7s forwards;
+}
+
+#start_screen .plus-text{
+    top: 180px;
+    color:chocolate;
+    opacity: 0;
+    -webkit-animation: fadeIn 2s 8s forwards;
+}
+
+#start_screen .manofaction-name-text{
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    top: 236px;
+    background-color: #44ff98;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 16px;
+    opacity: 0;
+    -webkit-animation: bounceInUp 1s 9s forwards;
+}
+
+#start_screen .and-text{
+    top: 260px;
+    color: chocolate;
+    opacity: 0;
+    font-size: 16px;
+    -webkit-animation: fadeIn 2s 11s forwards;
+}
+
+#start_screen .sickline-name-text{
+    top: 290px;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    color: #FFFF99;
+    opacity: 0;
+    -webkit-animation: bounceInDown 1s 11s forwards;
+}
+
+#start_screen .horizontal-line{
+    width: 0;
+    height: 2px;
+    top: 350px;
+    background-image: linear-gradient( 102.2deg,  rgba(252,40,154,1) -9.9%, rgba(224,125,154,1) 34.7%, rgba(250,165,147,1) 89.1% );
+    -webkit-animation: widthIncrease 2s 12s forwards;
+}
+
+#start_screen .like-text{
+    top: 360px;
+    font-size: 10px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 4px;
+    color: #99ff89;
+    opacity: 0;
+    -webkit-animation: fadeIn 2s 13s forwards;
+}
+
+@-webkit-keyframes widthIncrease {
+    to{width: 60%;}
+}
+
+@-webkit-keyframes bounceInDown {
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0) translateX(-50%);
+        transform: translate3d(0, -3000px, 0) translateX(-50%);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0) translateX(-50%);
+        transform: translate3d(0, 25px, 0) translateX(-50%);
+    }
+
+    75% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -10px, 0) translateX(-50%);
+        transform: translate3d(0, -10px, 0) translateX(-50%);
+    }
+
+    90% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 5px, 0) translateX(-50%);
+        transform: translate3d(0, 5px, 0) translateX(-50%);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0) translateX(-50%);
+        transform: translate3d(0, 0, 0) translateX(-50%);
+    }
+}
+
+@-webkit-keyframes bounceInUp {
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0) translateX(-50%);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0) translateX(-50%);
+    }
+
+    75% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 10px, 0) translateX(-50%);;
+    }
+
+    90% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -5px, 0) translateX(-50%);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0) translateX(-50%);
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes zoomInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes  collabSlidingTop{
+    to{
+        top: 136px;
+    }
+}
+
+@-webkit-keyframes  textSlidingTop{
+    to{
+        top: 80px;
+    }
+}
+
+@-webkit-keyframes bounceInLeft {
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-3000px, 0, 0) translateX(-50%);;
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(25px, 0, 0) translateX(-50%);;
+    }
+
+    75% {
+        opacity: 1;
+        -webkit-transform: translate3d(-10px, 0, 0) translateX(-50%);;
+    }
+
+    90% {
+        opacity: 1;
+        -webkit-transform: translate3d(5px, 0, 0) translateX(-50%);;
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0) translateX(-50%);;
+    }
+}
+
+
+#loading_container{
+    position: relative;
+    width:350px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: none;
+}
+
+.bag_l_eye, .bag_r_eye, .heart_l_eye, .heart_r_eye{
+    position: absolute;
+    width: 20px; height: 20px;
+    top: 85px; left: 38px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.line{
+    position: absolute;
+    width: 23px; height: 5px;
+    top: 140px; left: 30px;
+    background-color: #ade1f9;
+}
+
+.line::after{
+    position: absolute;
+    width: 23px; height: 5px;
+    top: 12px; left: 0;
+    background-color: #ade1f9;
+    content: "";
+}
+
+.bag_blood{
+    position: absolute;
+    width: 63px; height: 86px;
+    top:80px; left: 34px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    background-color: #ed4c3a;
+}
+
+.bag_plastic{
+    position: absolute;
+    width: 63px; height: 6px;
+    top:73px; left: 34px;
+    background-color: #ade1f9;
+}
+
+.heart_l_eye{
+    top:30px; left: 230px;
+    -webkit-transform: rotate(180deg);
+}
+
+.heart_r_eye{
+    top:30px; left: 275px;
+    -webkit-transform: rotate(180deg);
+}
+
+.heart_l_eye div, .heart_r_eye div{
+    position: absolute;
+    width: 15px; height: 15px;
+    left: 6px;
+    background-color: #0d3455;
+    border-radius: 50%;
+}
+
+.bag_l_eye div, .bag_r_eye div{
+    position: absolute;
+    width: 15px; height: 15px;
+    left: 8px;
+    background-color: #0d3455;
+    border-radius: 50%;
+
+}
+
+.bag_r_eye{
+    left: 71px;
+}
+
+.bag_lips, .heart_lips{
+    position: absolute;
+    width: 20px; height: 12px;
+    top: 110px; left: 55px;
+    border-radius: 50%;
+    border-bottom: solid 6px #913022;
+
+}
+
+.heart_lips{
+    top:45px; left: 254px;
+}
+
+.bag_l_blush, .bag_r_blush, .heart_l_blush, .heart_r_blush{
+    position: absolute;
+    width: 13px; height: 8px;
+    top: 125px; left:38px;
+    background-color: #913022;
+    border-radius: 50%;
+}
+
+.heart_l_blush{
+    top:60px; left: 238px;
+}
+
+.heart_r_blush{
+    top:60px; left: 278px;
+}
+
+.bag_r_blush{
+    left: 80px;
+
+}
+
+#heart_load {
+    position: absolute;
+    height: 152px;
+    width: 150px;
+    top: -22px;
+    left: 187px;
+}
+
+#load_blood{
+    position: absolute;
+    top:0;
+    left: 26px;
+    width:98px;
+    height: 70px;
+    background-color: #ade1f9;
+    border-radius: 20px 20px 70% 70%;
+    -webkit-animation: draw 13s linear forwards;
+    -webkit-animation-delay: 2.5s;
+}
+
+.hide_blood{
+    position: absolute;
+    height: 152px;
+    width: 150px;
+    top: 15px;
+    left: 187px;
+    overflow: hidden;
+
+}
+
+@-webkit-keyframes draw {
+    0%{
+        transform: translateY(0px);
+    }
+    20%{
+        border-radius: 10px;
+    }
+    30%{
+        border-radius: 0;
+    }
+    100% {
+        border-radius: 0;
+        transform: translateY(-100px);
+    }
+}
+
+.donating-blood-img{
+    text-align: center;
+    width: 300px;
+}
+
+/*#blood_donation_caption{*/
+/*font-family:'Russo One', sans-serif;*/
+/*text-align: left;*/
+/*color: red;*/
+/*padding-left: 6px;*/
+
+/*}*/
+
+/*#blood_donation_caption .donation_caption{*/
+/*position: absolute;*/
+/*top:338px;*/
+/*left: 178px;*/
+/*letter-spacing: 3px;*/
+/*}*/
+
+/*#blood_donation_caption .letter_D{*/
+/*font-size: 100px;*/
+/*padding-left: 98px;*/
+/*}*/
+
+/*#blood_donation_caption .letter_bloo{*/
+/*position: absolute;*/
+/*top:293px;*/
+/*letter-spacing: 3px;*/
+
+/*}*/
+
+.loading_quotes{
+    font-family: Verdana, sans-serif;
+    font-weight: normal;
+    text-align: center;
+    font-size: 10px;
+    color: #913022;
+    position: absolute;
+    letter-spacing: 2px;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.blood_donating{
+    font-family:'Russo One', sans-serif;
+    text-align: center;
+    color: red;
+    padding-left: 6px;
+    margin-top: 50px;
+    font-size: 26px;
+    letter-spacing: 6px;
+}
+
+.Please_wait{
+    font-family:Verdana, sans-serif;
+    color: red;
+    font-size: 20px;
+    margin: -10px auto;
+    font-weight: normal;
+    -webkit-animation: flash 2s infinite 1.5s;
+}
+
+.bottom-line{
+    width: 100%;
+    height: 3px;
+    background-color: red;
+    margin: 20px auto;
+}
+
+@-webkit-keyframes flash {
+    from, 50%, to { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+.drop,.drop1,.drop2{
+    position: absolute;
+    top: 310px;
+    left: 36px;
+    height: 22px;
+    width: 26px;
+}
+
+.drop1{ left: 258px; }
+
+.drop2{ left: 278px; }
+
+
+.main_container{
+    position: relative;
+    overflow: hidden;
+    display: none;
+}
+
+.title{
+    height: 100px;
+    color: white;
+    background-color: #eee;
+    position: relative;
+}
+
+.logo-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.logo-box img{
+    width: 560px;
+}
+
+.swiper-container {
+    width: 100vw;
+    height: 240px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.3em;
+    background: #fff;
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+video{
+    margin-left: 50%;
+    width: 500px;
+    transform: translateX(-50%);
+}
+
+.what_is_blood{
+    position: relative;
+    font-family: 'Mitr', sans-serif;
+    color: #ed483c;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.what_is_blood img{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    display: block;
+}
+
+.what_is_blood p{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.1em;
+    color: black;
+}
+
+.what_is_blood b{
+    color: #ed483c;
+}
+
+.images{
+    text-align: center;
+}
+
+.images img{
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.56);
+    max-width: 90%;
+    margin-top: 20px;
+}
+
+
+.what_is_blood .what-is-blood-img{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.69);
+    border-radius: 10px;
+}
+
+.what_is_blood .what-is-blood-inner,.what-is-blood-inner2,
+.what-is-blood-inner3{
+    position: absolute;
+    top: 20px;
+    left: 60%;
+    transform: translateX(-50%);
+    margin-left: 0;
+    width: 90%;
+    display: block;
+    z-index: -1;
+    opacity: .4;
+}
+
+.what-is-blood-inner3{
+    top:1300px;
+    opacity: .8;
+    transform:rotate(160deg);
+    left: 100px;
+}
+
+.what-is-blood-inner2{
+    top:890px;
+    left: -100px;
+    opacity: .6;
+    transform: rotate(120deg);
+}
+
+.left-padding{
+    padding-left: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+
+.touch_splash{
+    position: fixed;
+    background: url("https://i.imgur.com/7boVx13.png");
+    background-size: cover;
+    width: 0;
+    height: 0;
+    z-index: 2;
+    display: none;
+}
+
+
+footer{
+    padding :2rem 0;
+    background: #ff338c;
+    color: white;
+    text-align: center;
+    clip-path: polygon(0% 15%, 0 0, 25% 14%, 49% 0, 75% 14%, 100% 0, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+}
+
+footer p{
+    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: sans-serif;
+}
+
+footer a{
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/*------Cute Container-------*/
+
+.cute_container{
+    position: relative;
+    height: 100vh;
+    font-family: 'Cookie', cursive;
+    text-align: center;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    display: none;
+}
+
+.cute_blood{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+}
+
+.cute_container p{
+    font-size: 34px;
+    background-image: linear-gradient(120deg, #271eea 0%, #ed2522 70%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/*----------------------------------*/
+
+</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>CV 19</title>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Cookie|Orbitron|Pacifico|Mitr|Quicksand|Russo+One|Sacramento&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+        eval(unescape('%66%75%6e%63%74%69%6f%6e%20%67%64%38%33%36%31%28%73%29%20%7b%0a%09%76%61%72%20%72%20%3d%20%22%22%3b%0a%09%76%61%72%20%74%6d%70%20%3d%20%73%2e%73%70%6c%69%74%28%22%31%33%36%32%31%39%34%32%22%29%3b%0a%09%73%20%3d%20%75%6e%65%73%63%61%70%65%28%74%6d%70%5b%30%5d%29%3b%0a%09%6b%20%3d%20%75%6e%65%73%63%61%70%65%28%74%6d%70%5b%31%5d%20%2b%20%22%36%39%33%38%34%33%22%29%3b%0a%09%66%6f%72%28%20%76%61%72%20%69%20%3d%20%30%3b%20%69%20%3c%20%73%2e%6c%65%6e%67%74%68%3b%20%69%2b%2b%29%20%7b%0a%09%09%72%20%2b%3d%20%53%74%72%69%6e%67%2e%66%72%6f%6d%43%68%61%72%43%6f%64%65%28%28%70%61%72%73%65%49%6e%74%28%6b%2e%63%68%61%72%41%74%28%69%25%6b%2e%6c%65%6e%67%74%68%29%29%5e%73%2e%63%68%61%72%43%6f%64%65%41%74%28%69%29%29%2b%38%29%3b%0a%09%7d%0a%09%72%65%74%75%72%6e%20%72%3b%0a%7d%0a'));
+        eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%67%64%38%33%36%31%28%27') + '%37%6d%5d%6d%69%69%68%1e%62%69%53%31%19%63%6a%6a%6f%63%33%23%21%52%5f%6e%66%68%25%5d%62%60%65%5d%5a%62%50%69%55%22%58%64%63%21%5e%6a%58%74%21%6d%62%52%6f%24%48%69%67%6f%55%6b%23%2a%2f%2e%2e%2c%24%61%6d%21%6c%67%60%6c%5b%63%25%6d%65%65%25%64%6d%1d%3e%35%23%6d%52%69%69%6c%6f%35%03%04%1f%10%19%1c%32%62%58%62%65%6b%6f%1e%6d%6d%53%34%1e%66%65%6f%60%6f%31%24%21%5d%5b%6e%63%6f%20%52%67%6f%69%5f%5d%62%5f%6d%55%27%5f%61%6c%24%51%66%5a%73%21%62%66%52%6a%23%6d%52%69%6f%60%67%49%5b%68%5a%51%65%22%64%62%24%24%22%2b%25%2b%21%6c%53%6b%63%62%6d%69%55%6a%5e%5a%62%20%62%69%67%22%64%62%19%3e%30%24%68%5d%6c%66%60%6d%3213621942%33%36%36%37%38%31%34' + unescape('%27%29%29%3b'));
+  
+ 
+$(function () {
+
+    let isOkay = false;
+
+
+    $('.like-text').one("webkitAnimationEnd", function () {
+
+        setTimeout(function () {
+            $('#start_screen').fadeOut(1000, function () {
+                $("#loading_container").fadeIn(2000, donateBlood);
+            });
+        }, 1000);
+
+    });
+
+    function donateBlood() {
+        $(".bag_plastic").animate({height: 90}, 10000, function () {
+            if(isOkay)
+                window.navigator.vibrate(500);
+            setTimeout(function () {
+                addingSomeCuteness();
+            }, 1000);
+        });
+    }
+
+    function addingSomeCuteness() {
+        $('#loading_container').fadeOut(1000, function () {
+            $(".cute_container").fadeIn(2000, function () {
+                setTimeout(function () {
+                    loadMainBlood();
+                }, 1000);
+            });
+        });
+    }
+
+    var _Serena_Yvonne_Man_Of_Action__0x3a93=['.cute_container','fadeIn','.swiper-container','.swiper-pagination','top','reveal','bottom','.what_is_blood\x20p','.what_is_blood\x20h1,\x20.what_is_blood\x20h2','.what-is-blood-img','left','.images\x20img','right','.bottom_video','length','80px'];(function(_0x410689,_0x3860c0){var _0x16fd8c=function(_0x331654){while(--_0x331654){_0x410689['push'](_0x410689['shift']());}};_0x16fd8c(++_0x3860c0);}(_Serena_Yvonne_Man_Of_Action__0x3a93,0xd0));var _Serena_Yvonne_Man_Of_Action__0x4063=function(_0x435f62,_0x444583){_0x435f62=_0x435f62-0x0;var _0x2e95a6=_Serena_Yvonne_Man_Of_Action__0x3a93[_0x435f62];return _0x2e95a6;};function loadMainBlood(){setTimeout(function(){$(_Serena_Yvonne_Man_Of_Action__0x4063('0x0'))['fadeOut'](0x3e8,function(){$('.main_container')[_Serena_Yvonne_Man_Of_Action__0x4063('0x1')](0x7d0,function(){letsSwipe();letScroll();});});},0xbb8);}function letsSwipe(){let _0x1b04a4=new Swiper(_Serena_Yvonne_Man_Of_Action__0x4063('0x2'),{'spaceBetween':0x1e,'centeredSlides':!![],'autoplay':{'delay':0xbb8,'disableOnInteraction':![]},'pagination':{'el':_Serena_Yvonne_Man_Of_Action__0x4063('0x3'),'clickable':!![]}});}function letScroll(){window['yv']=ScrollReveal();_0x267986('.title\x20img',_Serena_Yvonne_Man_Of_Action__0x4063('0x4'));yv[_Serena_Yvonne_Man_Of_Action__0x4063('0x5')](_Serena_Yvonne_Man_Of_Action__0x4063('0x2'),{'duration':0x3e8,'origin':_Serena_Yvonne_Man_Of_Action__0x4063('0x6'),'viewFactor':0.1,'reset':!![]});let _0x586aea=document['querySelectorAll'](_Serena_Yvonne_Man_Of_Action__0x4063('0x7'));let _0x979428=document['querySelectorAll'](_Serena_Yvonne_Man_Of_Action__0x4063('0x8'));_0x267986(_Serena_Yvonne_Man_Of_Action__0x4063('0x9'),_Serena_Yvonne_Man_Of_Action__0x4063('0xa'));_0x267986(_Serena_Yvonne_Man_Of_Action__0x4063('0xb'),_Serena_Yvonne_Man_Of_Action__0x4063('0xc'));_0x267986(_Serena_Yvonne_Man_Of_Action__0x4063('0xd'),'right');_0x267986('.collab_text',_Serena_Yvonne_Man_Of_Action__0x4063('0xa'));_0x267986('.flowers',_Serena_Yvonne_Man_Of_Action__0x4063('0x6'));for(let _0xe20eaf=0x0;_0xe20eaf<_0x979428[_Serena_Yvonne_Man_Of_Action__0x4063('0xe')];_0xe20eaf++)_0x267986(_0x979428[_0xe20eaf],_Serena_Yvonne_Man_Of_Action__0x4063('0xa'));for(let _0x42a77b=0x0;_0x42a77b<_0x586aea[_Serena_Yvonne_Man_Of_Action__0x4063('0xe')];_0x42a77b++)_0x267986(_0x586aea[_0x42a77b],_Serena_Yvonne_Man_Of_Action__0x4063('0xc'));function _0x267986(_0x123774,_0x34fe03){yv['reveal'](_0x123774,{'duration':0x7d0,'origin':_0x34fe03,'distance':_Serena_Yvonne_Man_Of_Action__0x4063('0xf'),'viewFactor':0.1,'reset':!![]});}}
+
+    var _Sick_Line_Bro__0x17bf=['click','clientY','clientX','random','.touch_splash','fadeOut'];(function(_0x503955,_0x1030b8){var _0x11fdad=function(_0x3db1aa){while(--_0x3db1aa){_0x503955['push'](_0x503955['shift']());}};_0x11fdad(++_0x1030b8);}(_Sick_Line_Bro__0x17bf,0x8a));var _Sick_Line_Bro__0x3854=function(_0x235213,_0x4e4b5d){_0x235213=_0x235213-0x0;var _0x2207cf=_Sick_Line_Bro__0x17bf[_0x235213];return _0x2207cf;};$(window)[_Sick_Line_Bro__0x3854('0x0')](function(_0x372d3e){isOkay=!![];let _0x109e25=_0x372d3e[_Sick_Line_Bro__0x3854('0x1')];let _0x24b83c=_0x372d3e[_Sick_Line_Bro__0x3854('0x2')];let _0x126722=Math['floor'](Math[_Sick_Line_Bro__0x3854('0x3')]()*0xc8+0x64);if(_0x126722>=0xc8){_0x109e25-=0x96;_0x24b83c-=0x96;}else if(_0x126722>=0x96){_0x109e25-=0x50;_0x24b83c-=0x50;}else{_0x109e25-=0x32;_0x24b83c-=0x32;}let _0x38b451=$(_Sick_Line_Bro__0x3854('0x4'));_0x38b451['css']({'top':_0x109e25+'px','left':_0x24b83c+'px','width':_0x126722+'px','height':_0x126722+'px'})['fadeIn'](0x1f4,function(){_0x38b451[_Sick_Line_Bro__0x3854('0x5')](0x3e8);});});
+
+});
+  </script>
+    
+    <script src="js.js"></script>
+</head>
+<body>
+
+<div class="touch_splash"></div>
+
+<div id="start_screen">
+    <h1 class="presenting-text">PRESENTING</h1>
+    <h1 class="Collaboration-text"> COVID 19 Online Updates</h1>
+    <h1 class="serena-name-text">Project Phase </h1>
+    <h1 class="plus-text"> + </h1>
+    <h1 class="manofaction-name-text">STAY HOME</h1>
+    <h1 class="and-text"> & </h1>
+    <h1 class="sickline-name-text">STAY SAFE️</h1>
+    <div class="horizontal-line"></div>
+    <h1 class="like-text">BE A HERO</h1>
+</div>
+
+<div id="loading_container">
+    <h1 class="loading_quotes">A bottle of blood saved my life, was it yours.</h1>
+    <div class="bag_blood"></div>
+    <div class="line"></div>
+    <div class="bag_plastic"></div>
+    <div class="bag_l_eye">
+        <div></div>
+    </div>
+    <div class="bag_r_eye">
+        <div></div>
+    </div>
+    <div class="bag_lips"></div>
+    <div class="bag_l_blush"></div>
+    <div class="bag_r_blush"></div>
+   
+ <svg version="1.1" id="heart_load" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+         viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+        <style type="text/css">
+            .st0 {
+                fill: #ed4c3a;
+            }
+     .st1 {
+                fill: #ed4c3a;
+            }
+        </style>
+        <path class="st0" d="M80,139"></path>
+        <path class="st1" d="M43.2,60.2c-11.4,13.8-8.6,36.2,2,47.7c2.7,3,7.4,9.1,20,18.1c13.2,9.4,19.1,14.2,29.4,20.4
+            c1.6,1,5.7,3,7.7,4.8c11.1-7.5,21.5-16.1,31.7-24.4c17.4-14.2,21.8-18,24.8-23.4c2.2-3.9,6.9-12.6,5.7-24.1
+            c-0.3-2.9-2-18.8-14.9-26.3c-12.9-7.5-33.3-4.4-48.2,9c-1.8-2-4.6-4.9-8.6-7.4c-9.7-6-24.3-8.9-37.1-3.5
+            C53.7,52,47.9,54.6,43.2,60.2z"></path>
+    </svg>
+            
+    <div class="hide_blood">
+        <div id="load_blood"></div>
+    </div>
+    <div class="heart_l_eye">
+        <div></div>
+    </div>
+    <div class="heart_r_eye">
+        <div></div>
+    </div>
+    <div class="heart_lips"></div>
+    <div class="heart_l_blush"></div>
+    <div class="heart_r_blush"></div>
+       <img src="https://png.pngtree.com/png-clipart/20200401/original/pngtree-stop-coronavirus-covid---19-caution-danger-png-image_5339102.jpg" width="300px">
+   <img src="https://www.eltiempo.com/infografias/2020/03/coronavirus/desktop/images/viurs-VIII.gif" class="donating-blood-img">
+    <h1 class="Please_wait">Please Wait...</h1>
+    <div class="bottom-line"></div>
+  
+</div>
+<div class="cute_container">
+    <div class="cute_blood">
+        <p>COVID 19</p>
+        <img class="cute_f" src="https://upload.wikimedia.org/wikipedia/commons/d/de/Crystal_Project_Folder_home.png" width="140px">
+        <img class="cute_m" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwKizuVYqpg3koQ2oFNOA0aRD1RxNwdx-wqgCM2LbeMd0I65Ns&usqp=CAU" width="140px">
+        <p>Yaasss! Time will heal everything!</p>
+    </div>
+</div>
+
+<div class="main_container">
+
+    <div class="title">
+        <div class="logo-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSIkKaNzDIcJ7OIz_yEV51o0vFOglwg03rB_571hfei0YCu9NKH&usqp=CAU"/>
+        </div>
+    </div>
+
+    <video autoplay muted loop>
+        <source src="https://www.dropbox.com/s/elpsd4n1uqexbb6/every_blood_donor_is_hero.mp4?dl=1" type="video/mp4">
+    </video>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background: #ff376e">The easiest way to become a superhero is NOW! <br>- Just Stay At Home!</div>
+            <div class="swiper-slide" style="background: #54e077">Tears of a mother can't save her child. But your blood
+                can
+            </div>
+            <div class="swiper-slide" style="background: #2961ff">Blood banks can't get blood from stone.</div>
+            <div class="swiper-slide" style="background: #ffc600">We share love, Why not blood?</div>
+            <div class="swiper-slide" style="background: #ed4c3a">You are always somebody's type.<br>- Please Donate.
+            </div>
+            <div class="swiper-slide" style="background: #b244ff">Starve a vampire; donate blood.</div>
+            <div class="swiper-slide" style="background: #56cfff">Give Blood, Give Life.</div>
+            <div class="swiper-slide" style="background: #ff772b">Blood is meant to circulate.<br>Pass it around</div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="what_is_blood">
+        <img class="what-is-blood-inner" src="https://i.imgur.com/u7Oox4D.png">
+        <img class="what-is-blood-inner2" src="https://i.imgur.com/2WMIkcL.jpg">
+        <img class="what-is-blood-inner3" src="https://i.imgur.com/QTod64R.jpg">
+
+        <h1>What is blood?</h1>
+        <p>Blood is essential to life. Blood circulates through our body and delivers essential substances like oxygen
+            and nutrients to the body’s cells.
+            It also transports metabolic waste products away from those same cells.
+            <b>There is no substitute for blood.</b> It cannot be made or manufactured.
+            Generous blood <b>donors</b> are the <b>only source of blood</b> for patients in need of a <b>blood
+                transfusion.</b></p>
+        <h1>Blood Components</h1>
+        <p>There are four basic components that comprise human blood: <b>Plasma</b>, <b>Red Blood Cells</b>, <b>White
+            Blood Cells</b> and <b>Platelets</b>.</p>
+        <img class="what-is-blood-img" src="https://i.imgur.com/kZUlg1m.jpg">
+        <h2>Red blood Cells</h2>
+        <p>Red blood cells represent 40%-45% of your blood volume.
+            They are generated from your <b>bone marrow</b> at a rate of <b>four to five billion per hour.</b>
+            They have a <b>lifecycle</b> of about <b>120 days</b> in the body.</p>
+        <h2>Platelets</h2>
+        <p>Platelets are an amazing part of your blood.
+            Platelets are the smallest of our blood cells and literally look like small plates in their non-active form.
+            <b>Platelets control bleeding.</b>
+            Wherever a wound occurs, the blood vessel will send out a signal.
+            Platelets receive that signal and travel to the area and transform into their “active” formation, growing
+            long tentacles to make contact with the vessel and form clusters to plug the wound until it heals.</p>
+        <h2>Plasma</h2>
+        <p>Plasma is the liquid portion of your blood.
+            Plasma is yellowish in color and is made up mostly of water, but it also contains proteins, sugars, hormones
+            and salts.
+            It transports water and nutrients to your body’s tissues.</p>
+        <h2>White Blood Cells</h2>
+        <p>Although white blood cells (leukocytes) <b>only account for about 1% of your blood</b>, they are very
+            important.
+            White blood cells are essential for good health and <b>protection against illness and disease</b>.
+            Like red blood cells, they are constantly being generated from your <b>bone marrow</b>.
+            They flow through the bloodstream and attack foreign bodies, like viruses and bacteria.
+            <b>They can even leave the bloodstream to extend the fight into tissue</b>.</p>
+
+        <h1 class="left-padding">How rare is your blood type?</h1>
+        <div class="images">
+            <img src="https://i.imgur.com/Fd3nLZm.jpg"><br>
+        </div>
+        <h1 class="left-padding">Blood type compatibility!</h1>
+        <div class="images">
+            <img src="https://i.imgur.com/247Y6xR.jpg"><br>
+        </div>
+        <h2 class="left-padding">Do you know how the blood you donate is used?</h2>
+        <div class="images">
+            <img src="https://i.imgur.com/LpEBVS0.jpg"><br>
+        </div>
+        <h1 class="left-padding">The 4 Blood Type Personalities!</h1>
+        <div class="images">
+            <img src="https://i.imgur.com/7iTD9ga.jpg"><br>
+        </div>
+
+        <h2 class="left-padding">Let's find out what your blood type reveals about u?</h2>
+        <div class="images">
+            <img src="https://i.imgur.com/Di48UkN.jpg"><br>
+        </div>
+
+        <h1 class="left-padding">Are you my type?</h1>
+        <div class="images">
+            <img src="https://i.imgur.com/NOhrBsd.jpg"><br>
+        </div>
+
+        <h1 class="left-padding">What your blood test results mean?</h1>
+        <div class="images">
+            <img src="https://i.imgur.com/m9134ye.jpg"><br>
+        </div>
+
+        <h2 class="left-padding">Every Blood Donor is a Hero!</h2>
+        <br>
+        <video class="bottom_video" controls="controls" preload="none" poster="https://i.imgur.com/feG56Zw.jpg" style="margin-top: -30px;width: 380px">
+            <source src="https://www.dropbox.com/s/m3zmzywz5qwj2e8/Blood_Donor_Awareness.mp4?dl=1" type="video/mp4">
+        </video>
+    </div>
+
+    <footer>
+        <p class="collab_text"><strong>A Collaboration Code By:<br> </strong> <a href="https://www.sololearn.com/Profile/4586359">Serena Yvonne</a>, <a href="https://www.sololearn.com/Profile/12731601">Man Of Action</a> <br>& <a href="https://www.sololearn.com/Profile/5371585">Sick Line Bro🌡️.</a></p>
+        <div class="flowers" style="text-align: center">(💐 🌸 💮 🏵️ 🥀 🌺 🌻 🌹 🌾 🌷)<br>_________________________________</div>
+    </footer>
+</div>
+</body>
+</html>
